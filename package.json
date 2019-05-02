@@ -1,0 +1,64 @@
+{
+  "name": "e1p-base-route",
+  "version": "1.0.0",
+  "description": "E1Page Base",
+  "main": "home.ts",
+  "scripts": {
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "author": "Bragason and Associates Pty. Ltd.",
+  "license": "MIT",
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 4
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.4.0",
+    "knockout": "^3.4.2",
+    "popper.js": "^1.15.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/d3": "^5.7.2",
+    "@types/jquery": "^3.3.29",
+    "@types/node": "^10.12.18",
+    "@types/numeral": "0.0.25",
+    "autoprefixer": "^9.5.1",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "fork-ts-checker-webpack-plugin": "^1.0.2",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^5.3.2",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.3",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.1.5"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Herdubreid/e1p-base-route.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Herdubreid/e1p-base-route/issues"
+  },
+  "homepage": "https://github.com/Herdubreid/e1p-base-route#readme"
+}
