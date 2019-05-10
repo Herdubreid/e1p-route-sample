@@ -1,3 +1,3 @@
 import './nav';
-import './page-one';
-import './page-two';
+import './coa-tree';
+import './acc-inquiry';

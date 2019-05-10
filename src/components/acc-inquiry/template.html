@@ -1,0 +1,53 @@
+<div class="acc-inquiry">
+    <table class="table">
+        <tbody data-bind="foreach: balanceRows$">
+            <tr data-bind="visible: balance.length > 0">
+                <td>
+                    <a href=# data-bind="text: title, click: $parent.select" class="list-group-item list-group-item-action"></a>
+                </td>
+            </tr>
+            <tr data-bind="visible: balance.length > 0">
+                <td>
+                    <table class="table-sm table-borderless table-striped">
+                        <thead>
+                            <tr>
+                                <td>FY</td>
+                                <td>Sum</td>
+                                <td>Jul</td>
+                                <td>Aug</td>
+                                <td>Sep</td>
+                                <td>Oct</td>
+                                <td>Nov</td>
+                                <td>Dec</td>
+                                <td>Jan</td>
+                                <td>Feb</td>
+                                <td>Mar</td>
+                                <td>Apr</td>
+                                <td>May</td>
+                                <td>Jun</td>
+                            </tr>
+                        </thead>
+                        <tbody data-bind="foreach: balance">
+                            <tr>
+                                <td data-bind="text: `20${fy}`"></td>
+                                <td data-bind="amount: sum" class="amount"></td>
+                                <td data-bind="amount: an[0]" class="amount"></td>
+                                <td data-bind="amount: an[1]" class="amount"></td>
+                                <td data-bind="amount: an[2]" class="amount"></td>
+                                <td data-bind="amount: an[3]" class="amount"></td>
+                                <td data-bind="amount: an[4]" class="amount"></td>
+                                <td data-bind="amount: an[5]" class="amount"></td>
+                                <td data-bind="amount: an[6]" class="amount"></td>
+                                <td data-bind="amount: an[7]" class="amount"></td>
+                                <td data-bind="amount: an[8]" class="amount"></td>
+                                <td data-bind="amount: an[9]" class="amount"></td>
+                                <td data-bind="amount: an[10]" class="amount"></td>
+                                <td data-bind="amount: an[11]" class="amount"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

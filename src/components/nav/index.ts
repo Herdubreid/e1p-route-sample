@@ -1,39 +1,33 @@
 // Navigation Component
 import './style.scss';
 import * as ko from 'knockout';
-import { IStateParams, IState } from '../../state';
-
-interface IPage {
-    component: string;
-    title: string;
-}
+import { IPage } from '../../state';
+import { Actions } from '../../store';
 
 export let navigation: ViewModel;
 
 class ViewModel {
-    readonly PAGE_ONE = 0;
-    readonly PAGE_TWO = 1;
-    pages$ = ko.observableArray<IPage>([
-        { component: 'e1p-page-one', title: 'Page One' },
-        { component: 'e1p-page-two', title: 'Page Two' }
-    ]);
-    selectedPage$ = ko.observable<IPage>(this.pages$()[this.PAGE_ONE]);
-    busy$ = ko.observable(false);
-    state$ = ko.observable<IState>();
+    pages$: ko.ObservableArray<IPage>;
+    selectedPage$: ko.Observable<IPage>;
     goto(page: IPage) {
         if (page !== navigation.selectedPage$()) {
             navigation.selectedPage$(page);
         }
     }
+    delete() {
+        Actions.PageDelete(navigation.selectedPage$());
+        navigation.selectedPage$(navigation.pages$()[0]);
+     }
     toggleNav() {
         $('#wrapper').toggleClass('toggled');
         $('.fa-bars').toggleClass('fa-rotate-90');
     };
     descendantsComplete = () => {
     }
-    constructor(params: IStateParams) {
+    constructor(params: { data: ko.ObservableArray<IPage> }) {
         navigation = this;
-        this.state$(params.state);
+        this.pages$ = params.data;
+        this.selectedPage$ = ko.observable(params.data()[0]);
     }
 }
 

@@ -6,6 +6,6 @@ description: > # this means to ignore newlines until "aux_links:"
 
 aux_links:
   "Visit on Github":
-  - "//github.com/Herdubreid/e1p-base-route"
+  - "//github.com/Herdubreid/e1p-route-sample"
 
 remote_theme: pmarsceill/just-the-docs

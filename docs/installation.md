@@ -5,14 +5,14 @@ nav_order: 2
 
 ### Install latest build
 
-[Download the latest `home.zip`](https://github.com/Herdubreid/e1p-base-route/releases/latest) and uploaded to `E1`.
+[Download the latest `home.zip`](https://github.com/Herdubreid/e1p-route-sample/releases/latest) and uploaded to `E1`.
 
 ### Build from source
 
-Go to the [Github page](https://github.com/Herdubreid/e1p-base-route) and either download the source as a zip file or clone with `git`:
+Go to the [Github page](https://github.com/Herdubreid/e1p-route-sample) and either download the source as a zip file or clone with `git`:
 
 ```bash
-$ git clone https://github.com/Herdubreid/e1p-base-route
+$ git clone https://github.com/Herdubreid/e1p-route-sample
 ```
 
 Install components with `npm` from the source root directory:
@@ -34,7 +34,7 @@ Zip up the build output in the `/dist` folder and upload to `E1`.
 In addition to the source code, a configured [e1pagehelper.js](https://gist.github.com/Herdubreid/5daff3c5108a732b24ea1c735e1e721e) is required to run a standalone `E1 Page`.  After updating it with user, password and ais-url, place it in a in the parent folder of the source under `/jde/e1pages`.  The install directory tree should look like this:
 
 ```
-/e1p-base-route     <-- Source folder
+/e1p-route-sample     <-- Source folder
     /docs
     /node_modules
     /src

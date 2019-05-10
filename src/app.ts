@@ -1,27 +1,28 @@
 import './css/style.scss';
 import * as ko from 'knockout';
-import { IState, initState, dirtyFlag$ } from './state';
+import Numeral from 'numeral';
+import { IPage } from './state';
+import { pageStore } from './store';
 import './components';
 
 /**
  * App
  */
 
-const storageKey = 'io-celin-e1p-base-route';
-// Storage Read
-const state = JSON.parse(sessionStorage.getItem(storageKey) || '{}') || initState;
-// Storage Save
-dirtyFlag$.subscribe(dirty => {
-    if (dirty) {
-        sessionStorage.setItem(storageKey, JSON.stringify(state));
-        dirtyFlag$(false);
+export class App {
+    pages$: ko.ObservableArray<IPage>;
+    constructor() {
+        this.pages$ = pageStore.getState().pages$;
     }
-});
-
-class ViewModel {
-    constructor(public state: IState) { }
 }
 
-const viewModel = new ViewModel(state);
+export const app = new App();
 
-ko.applyBindings(viewModel);
+ko.applyBindings(app);
+
+ko.bindingHandlers.amount = {
+    update: (element, valueAccessor) => {
+        const value = Numeral(valueAccessor());
+        ko.bindingHandlers.text.update(element, () => value.format());
+    }
+};

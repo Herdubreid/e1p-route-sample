@@ -1,7 +1,7 @@
 {
-  "name": "e1p-base-route",
+  "name": "e1p-route-sample",
   "version": "1.0.0",
-  "description": "E1Page Base",
+  "description": "E1Page Route Sample",
   "main": "home.ts",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
@@ -15,9 +15,13 @@
   },
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "effector": "^0.18.6",
     "jquery": "^3.4.0",
+    "jstree": "^3.3.8",
     "knockout": "^3.4.2",
-    "popper.js": "^1.15.0"
+    "numeral": "^2.0.6",
+    "popper.js": "^1.15.0",
+    "store2": "^2.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -25,8 +29,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-typescript": "^7.1.0",
-    "@types/d3": "^5.7.2",
     "@types/jquery": "^3.3.29",
+    "@types/jstree": "^3.3.37",
     "@types/node": "^10.12.18",
     "@types/numeral": "0.0.25",
     "autoprefixer": "^9.5.1",
@@ -55,10 +59,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Herdubreid/e1p-base-route.git"
+    "url": "git+https://github.com/Herdubreid/e1p-route-sample.git"
   },
   "bugs": {
-    "url": "https://github.com/Herdubreid/e1p-base-route/issues"
+    "url": "https://github.com/Herdubreid/e1p-route-sample/issues"
   },
-  "homepage": "https://github.com/Herdubreid/e1p-base-route#readme"
+  "homepage": "https://github.com/Herdubreid/e1p-route-sample#readme"
 }

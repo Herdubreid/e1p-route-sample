@@ -1,0 +1,43 @@
+/* jstree */
+@import '../../../node_modules/jstree/dist/themes/default/style.css';
+
+.coa-tree {
+    .form-control {
+        width: 300px;
+    }
+
+    .fa-home {
+        color: darkblue;
+    }
+
+    .fa-layer-group {
+        color: steelblue;
+    }
+
+    .fa-times {
+        color: red;
+    }
+
+    .fa-check {
+        color: green;
+    }
+
+    .jstree-anchor {
+        margin-bottom: 4px;
+    }
+
+    .large-icon {
+        padding: 3px;
+        margin-right: 6px;
+    }
+
+    .icon {
+        padding: 5px;
+        margin-right: 6px;
+    }
+
+    .small-icon {
+        padding: 7px;
+        margin-right: 6px;
+    }
+}

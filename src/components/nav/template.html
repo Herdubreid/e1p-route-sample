@@ -2,11 +2,11 @@
     <!-- Sidebar Nav -->
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">E1 Page SPA</div>
-        <div class="list-group list-group-flush">
-            <div data-bind="foreach: pages$">
-                <a href="#" data-bind="text: title, click: $parent.goto"
-                    class="list-group-item list-group-item-action bg-light"></a>
-            </div>
+        <div data-bind="foreach: pages$" class="list-group list-group-flush">
+            <a data-bind="click: $parent.goto, css: { active: id === $parent.selectedPage$().id }" class="list-group-item list-group-item-action">
+                <i data-bind="visible: busy" class="fas fa-spinner fa-spin"></i>
+                <span data-bind="text: title"></span>
+            </a>
         </div>
     </div>
     <!-- Nav Content -->
@@ -19,14 +19,18 @@
                     </button>
                 </div>
                 <div class="col">
-                    <h3 data-bind="text: title" class="text-center"></h3>
+                    <h3 data-bind="text: title" class="text-center m-0"></h3>
                 </div>
-                <div class="col-auto"></div>
+                <div class="col-auto">
+                    <button data-bind="click: $parent.delete, visible: id !== 'coa'" class="btn btn-lg btn-outline-danger">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
             </div>
         </nav>
         <div class="container-fluid" data-bind="component: {
             name: component,
-            params: { state: $root.state }
+            params: { page: $data }
         }">
         </div>
     </div>
