@@ -2,8 +2,8 @@
     <table class="table">
         <tbody data-bind="foreach: balanceRows$">
             <tr data-bind="visible: balance.length > 0">
-                <td>
-                    <a href=# data-bind="text: title, click: $parent.select" class="list-group-item list-group-item-action"></a>
+                <td class="pb-0">
+                    <button data-bind="text: title, click: $parent.select, attr: { disabled: children.length===0 }" class="btn btn-outline-primary"></button>
                 </td>
             </tr>
             <tr data-bind="visible: balance.length > 0">
@@ -12,7 +12,7 @@
                         <thead>
                             <tr>
                                 <td>FY</td>
-                                <td>Sum</td>
+                                <td data-bind="text: showTotal ? 'Total' : ''"></td>
                                 <td>Jul</td>
                                 <td>Aug</td>
                                 <td>Sep</td>
@@ -29,8 +29,8 @@
                         </thead>
                         <tbody data-bind="foreach: balance">
                             <tr>
-                                <td data-bind="text: `20${fy}`"></td>
-                                <td data-bind="amount: sum" class="amount"></td>
+                                <td data-bind="text: `${fy}/${fy+1}`"></td>
+                                <td data-bind="amount: $parent.showTotal ? sum : null" class="amount"></td>
                                 <td data-bind="amount: an[0]" class="amount"></td>
                                 <td data-bind="amount: an[1]" class="amount"></td>
                                 <td data-bind="amount: an[2]" class="amount"></td>
@@ -50,4 +50,5 @@
             </tr>
         </tbody>
     </table>
+    <div data-bind="text: msg$"></div>
 </div>

@@ -11,7 +11,7 @@ const db = storage.session.namespace('io-celin-e1p-route-sample');
 
 export const Actions = {
     PageAdd: createEvent<IPage>(),
-    PageDelete: createEvent<IPage>(), 
+    PageDelete: createEvent<IPage>(),
     PageUpdate: createEvent<IPage>(),
     PageSave: createEvent<IPage>(),
     PageRefresh: createEvent<IAccPage>()
@@ -21,16 +21,11 @@ export const pageStore = createStore<IState>(
     db.size() > 0
         ? {
             pages$: ko.observableArray((Object.values<IPage>(db.getAll()))
-                .map(p => {
-                    return {
-                        ...p,
-                        busy: false
-                    }
-                })
-                .sort((a, b) => a.title.localeCompare(b.title)))
+                .sort((a, b) => b.sequence - a.sequence))
         }
         : initState)
     .on(Actions.PageAdd, (state: IState, page: IPage) => {
+        page.sequence = state.pages$().length;
         state.pages$.unshift(page);
     })
     .on(Actions.PageDelete, (state: IState, page: IPage) => {
@@ -57,21 +52,21 @@ export const pageStore = createStore<IState>(
             }, accounts);
         const accounts = page.data.node.children
             .map(n => {
-                const flat: INode[] = [];
+                const flat: INode[] = [n];
                 flatten(flat, n);
                 return {
                     ...n,
                     flat
                 }
             });
-        const dataRequests = accounts.map(a => accountBalance(a.flat.filter(a => a.data.pec !== 'N').map(a => a.data.aid)));
+        const dataRequests = accounts.map(a => accountBalance(a.flat.map(a => a.data.aid)));
         const batchRequest = {
             outputType: 'GRID_DATA',
             batchDataRequest: true,
             dataRequests
         };
         callAISService(batchRequest, DATA_SERVICE, response => {
-            const mappedResponse = Object.values<any>(response)
+            page.data.save = Object.values<any>(response)
                 .filter(g => g.output)
                 .map(g => g.output)
                 .map(g => {
@@ -111,8 +106,9 @@ export const pageStore = createStore<IState>(
                             };
                         });
                 });
-            page.data.response(mappedResponse);
             page.busy = false;
+            page.data.response(page.data.save);
+            Actions.PageSave(page);
             Actions.PageUpdate(page);
         });
     });

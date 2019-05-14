@@ -32,12 +32,14 @@ export interface IPage {
     title: string;
     data: any;
     busy: boolean;
+    sequence: number;
 }
 
 export interface IAccPage extends IPage {
     data: {
         node: INode;
-        response?: any;
+        save: any[];
+        response?: ko.ObservableArray<any>;
     };
 }
 
@@ -46,6 +48,7 @@ const coaPage: IPage = {
     component: 'e1p-coa-tree',
     title: 'Chart of Accounts',
     busy: false,
+    sequence: 0,
     data: { nodes: [], filter: '' }
 }
 

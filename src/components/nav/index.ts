@@ -9,6 +9,9 @@ export let navigation: ViewModel;
 class ViewModel {
     pages$: ko.ObservableArray<IPage>;
     selectedPage$: ko.Observable<IPage>;
+    celin() {
+        window.open('http://e1p-templates.celin.io');
+    }
     goto(page: IPage) {
         if (page !== navigation.selectedPage$()) {
             navigation.selectedPage$(page);
@@ -19,7 +22,7 @@ class ViewModel {
         navigation.selectedPage$(navigation.pages$()[0]);
      }
     toggleNav() {
-        $('#wrapper').toggleClass('toggled');
+        $('.wrapper').toggleClass('toggled');
         $('.fa-bars').toggleClass('fa-rotate-90');
     };
     descendantsComplete = () => {

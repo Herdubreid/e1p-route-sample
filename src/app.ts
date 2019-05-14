@@ -20,6 +20,8 @@ export const app = new App();
 
 ko.applyBindings(app);
 
+Numeral.nullFormat('');
+
 ko.bindingHandlers.amount = {
     update: (element, valueAccessor) => {
         const value = Numeral(valueAccessor());

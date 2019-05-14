@@ -2,7 +2,7 @@
 import './style.scss';
 import * as ko from 'knockout';
 import 'jstree';
-import { IPage, ICoa } from '../../state';
+import { IPage, ICoa, IAccPage } from '../../state';
 import { Actions } from '../../store';
 import { navigation } from '../nav';
 
@@ -197,8 +197,8 @@ class ViewModel {
             coa.page.data.nodes = coa.holder.jstree(true).get_json();
             Actions.PageSave(this.page);
         }).on('select_node.jstree', (_, select) => {
-            if (select.event && select.node.state.loaded) {
-                let accPage = navigation.pages$().find(p => p.id === select.node.id);
+            if (select.event && select.node.state.loaded && select.node.children.length) {
+                let accPage: IAccPage = navigation.pages$().find(p => p.id === select.node.id);
                 if (!accPage) {
                     const recursiveNodes = (children: any[]) => children
                         .map(id => {
@@ -221,7 +221,8 @@ class ViewModel {
                         component: 'e1p-page-acc-inq',
                         title: select.node.text,
                         busy: false,
-                        data: { node }
+                        sequence: 0,
+                        data: { node, save: [] }
                     };
                     Actions.PageAdd(accPage);
                     Actions.PageSave(accPage);
