@@ -169,13 +169,14 @@ class ViewModel {
             .toLowerCase().includes(s.toLocaleLowerCase()));
         coa.holder.jstree(true).hide_node(hide, true);
         coa.holder.jstree(true).show_node(show, false);
+        coa.page.data.nodes = coa.holder.jstree(true).get_json();
+        coa.page.data.filter = s;
+        Actions.PageSave(this.page);
     }
     descendantsComplete = () => {
         this.filter$
             .subscribe(s => {
                 coa.filter(s);
-                coa.page.data.filter = s;
-                ;
             });
     }
     constructor(params: { page: ICoaPage }) {
