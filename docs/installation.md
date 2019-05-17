@@ -12,7 +12,7 @@ nav_order: 2
 Go to the [Github page](https://github.com/Herdubreid/e1p-route-sample) and either download the source as a zip file or clone with `git`:
 
 ```bash
-$ git clone https://github.com/Herdubreid/e1p-route-sample
+$ git clone https://github.com/Herdubreid/e1p-route-sample.git
 ```
 
 Install components with `npm` from the source root directory:
